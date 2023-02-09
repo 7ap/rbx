@@ -1,0 +1,11 @@
+[package]
+name = "rbx"
+version = "0.0.0"
+authors = ["7ap"]
+edition = "2021"
+description = "🦀 Roblox, rewritten in Rust."
+documentation = "https://docs.rs/rbx"
+repository = "https://github.com/7ap/rbx/"
+license = "MIT"
+
+[dependencies]
