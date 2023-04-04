@@ -1,5 +1,3 @@
-use std::ffi::c_char;
-use std::marker::PhantomData;
 use std::ops::Deref;
 
 use super::atomic::*;

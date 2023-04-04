@@ -9,5 +9,5 @@ pub struct Guid {
 #[derive(Debug)]
 pub struct GuidItem<T> {
     t: PhantomData<T>,
-    _todo: [c_char; 10],
+    _todo: [c_char; 0x10],
 }
