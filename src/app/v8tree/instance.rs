@@ -4,7 +4,7 @@ use crate::app::reflection::DescribedBase;
 use crate::app::util::GuidItem;
 use crate::base::rbx::diagnostics::Countable;
 use crate::base::rbx::Noncopyable;
-use crate::stl::memory::SharedPtr;
+use crate::stl::memory::{SharedPtr, UniquePtr};
 use crate::stl::string::String as CxxString;
 use crate::stl::vector::Vector;
 
@@ -22,7 +22,7 @@ pub struct Instance {
     pub name: *mut CxxString,
     pub children: SharedPtr<Vector<SharedPtr<*mut Instance>>>,
     pub parent: *mut Instance,
-    // pub edit_time_metadata: EditTimeMetadata,
+    pub edit_time_metadata: UniquePtr<usize>, // UniquePtr<EditTimeMetadata>
     // pub deprecated_unique_id: UniqueId,
     // pub completeness: Completeness,
     // pub on_demand_ptr: OnDemandInstance,
