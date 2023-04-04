@@ -33,13 +33,20 @@ impl<T> Deref for SharedPtr<T> {
 
 #[derive(Clone, Copy, Debug)]
 #[repr(C)]
-pub struct DefaultDelete<T> {
-    t: PhantomData<T>,
-    _todo: c_char,
+pub struct UniquePtr<T> {
+    ptr: *mut T,
 }
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug)]
 #[repr(C)]
-pub struct UniquePtr<T> {
-    pair: (DefaultDelete<T>, *mut T),
+pub struct WeakPtr<T> {
+    _super0: PtrBase<T>,
+}
+
+impl<T> Deref for WeakPtr<T> {
+    type Target = PtrBase<T>;
+
+    fn deref(&self) -> &Self::Target {
+        &self._super0
+    }
 }
