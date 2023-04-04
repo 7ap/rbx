@@ -1,3 +1,7 @@
-# 🦀 rbx
+# 🎮 rbx
 
-Roblox, rewritten in Rust.
+Rust "bindings" for Roblox.
+
+## ⚠️ Disclaimer
+
+This is still *very* incomplete, use with caution.
