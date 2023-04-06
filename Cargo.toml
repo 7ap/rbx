@@ -8,10 +8,18 @@ documentation = "https://docs.rs/rbx"
 repository = "https://github.com/7ap/rbx/"
 license = "MIT"
 
+[[example]]
+name = "studio"
+path = "./examples/studio/lib.rs"
+crate-type = ["cdylib"]
+
 [dependencies]
 anyhow = "1.0"
 log = "0.4"
 pelite = "0.10"
+
+[dev-dependencies]
+env_logger = "0.10"
 
 [dependencies.windows]
 version = "0.48"
