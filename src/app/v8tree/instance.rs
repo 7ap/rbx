@@ -1,4 +1,5 @@
 use std::ops::Deref;
+use std::ptr::NonNull;
 
 use crate::app::reflection::DescribedBase;
 use crate::app::util::{GuidItem, UniqueId};
@@ -53,5 +54,26 @@ impl Deref for Instance {
 
     fn deref(&self) -> &Self::Target {
         &self._super0
+    }
+}
+
+impl Instance {
+    pub fn get_children(&self) -> Vec<NonNull<Instance>> {
+        let mut instances = Vec::new();
+
+        let children = unsafe { &mut *self.children.ptr };
+        let (mut first, last) = (children.first, children.last);
+
+        while first != last {
+            unsafe {
+                if let Some(child) = NonNull::new(*(*first).ptr) {
+                    instances.push(child);
+                }
+
+                first = first.add(1);
+            };
+        }
+
+        instances
     }
 }
