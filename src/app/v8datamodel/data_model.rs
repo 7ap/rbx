@@ -1,4 +1,4 @@
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 use std::ptr::NonNull;
 
 use anyhow::Result;
@@ -17,6 +17,12 @@ impl Deref for DataModel {
 
     fn deref(&self) -> &Self::Target {
         &self._super0
+    }
+}
+
+impl DerefMut for DataModel {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self._super0
     }
 }
 

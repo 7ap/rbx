@@ -27,6 +27,24 @@ impl Debug for String {
 }
 
 impl String {
+    pub fn new(string: &'static str) -> Self {
+        if string.len() >= 16 {
+            panic!("this deosnt work");
+        }
+
+        let buf = string.as_ptr() as *mut [u8; 16];
+
+        let data = StringVal {
+            buf: unsafe { (*buf).clone() },
+        };
+
+        Self {
+            data,
+            size: string.len(),
+            res: 0xf + string.len(),
+        }
+    }
+
     pub fn c_str(&self) -> Result<*const c_char> {
         let string = if self.size < 16 {
             let bytes = unsafe { self.data.buf.as_slice() };
