@@ -4,4 +4,4 @@ mod property;
 mod service;
 mod verb;
 
-pub use instance::Instance;
+pub use instance::{Completeness, Instance};

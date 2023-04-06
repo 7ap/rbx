@@ -1,6 +1,10 @@
 use std::ops::Deref;
+use std::ptr::NonNull;
+
+use anyhow::Result;
 
 use crate::app::v8tree::Instance;
+use crate::base::rbx::TaskScheduler;
 
 #[derive(Debug)]
 #[repr(C)]
@@ -13,5 +17,18 @@ impl Deref for DataModel {
 
     fn deref(&self) -> &Self::Target {
         &self._super0
+    }
+}
+
+impl DataModel {
+    pub fn get() -> Result<NonNull<DataModel>> {
+        let data_model = unsafe {
+            let task_scheduler = TaskScheduler::get()?.as_mut();
+            let render = task_scheduler.get_jobs_by_name("Render")?.as_mut();
+
+            NonNull::new(render.arbiter.ptr.byte_offset(0x10) as *mut DataModel)
+        };
+
+        Ok(data_model.unwrap())
     }
 }

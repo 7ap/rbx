@@ -11,7 +11,7 @@ pub struct TaskSchedulerJob {
     _vtable: *mut usize,
     _super0: SharedPtr<Self>,
     pub name: CxxString,
-    pub arbriter: SharedPtr<TaskSchedulerArbiter>,
+    pub arbiter: SharedPtr<TaskSchedulerArbiter>,
 }
 
 impl Deref for TaskSchedulerJob {
