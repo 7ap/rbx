@@ -1,6 +1,10 @@
-mod string;
-
-pub use string::String;
+pub mod atomic;
+pub mod condition_variable;
+pub mod functional;
+pub mod memory;
+pub mod mutex;
+pub mod string;
+pub mod vector;
 
 #[cfg(test)]
 mod tests {
@@ -10,7 +14,7 @@ mod tests {
     fn string() {
         let _ = env_logger::builder().is_test(true).try_init();
 
-        let mut string = String::new();
+        let mut string = string::String::new();
         info!("empty: {:?} ({:?})", string.data(), string);
         assert_eq!("", string.data());
 
