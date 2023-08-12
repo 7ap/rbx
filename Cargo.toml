@@ -9,3 +9,8 @@ repository = "https://github.com/7ap/rbx/"
 license = "MIT"
 
 [dependencies]
+libc = "0.2"
+log = "0.4"
+
+[dev-dependencies]
+env_logger = "0.10"
