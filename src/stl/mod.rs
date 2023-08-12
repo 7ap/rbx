@@ -12,6 +12,8 @@ mod tests {
 
     #[test]
     fn string() {
+        use log::info;
+
         let _ = env_logger::builder().is_test(true).try_init();
 
         let mut string = string::String::new();
