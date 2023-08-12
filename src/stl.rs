@@ -108,7 +108,5 @@ mod tests {
         string.assign("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         info!("large: {:?} ({:?})", string.data(), string);
         assert_eq!("ABCDEFGHIJKLMNOPQRSTUVWXYZ", string.data());
-
-        assert!(false)
     }
 }
